@@ -1,0 +1,8 @@
+expectedInstall   = `${app.fullNameSafe}_${app.versionToken}_install.ps1`
+expectedUninstall = `${app.fullNameSafe}_${app.versionToken}_uninstall.ps1`
+
+Rule 1: install.script.fileName      == expectedInstall
+Rule 2: uninstall.script.fileName    == expectedUninstall
+Rule 3: packaging.setupFile          == install.script.fileName
+Rule 4: install.command contains install.script.fileName
+Rule 5: uninstall.command contains uninstall.script.fileName

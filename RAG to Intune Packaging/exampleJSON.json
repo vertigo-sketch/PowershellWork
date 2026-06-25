@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "1.2.0",
+  "specId": "2c1f4e0a-21f8-4c03-88e4-6c0a5b0f2e37",
+  "createdBy": "jeremy.miller",
+  "createdAt": "2026-03-05T20:25:00-05:00",
+
+  "app": {
+    "fullName": "Dell Command Update",
+    "fullNameSafe": "DellCommandUpdate",
+    "publisher": "Dell",
+    "version": "5.6.0 A00",
+    "versionToken": "5.6.0_A00",
+    "architecture": "x64"
+  },
+
+  "payload": {
+    "type": "exe",
+    "primaryFile": "Dell-Command-Update-Windows-Universal-Application_2WT0J_WIN64_5.6.0_A00.EXE",
+    "additionalFiles": []
+  },
+
+  "install": {
+    "context": "system",
+    "command": "powershell.exe -ExecutionPolicy Bypass -NoProfile -File DellCommandUpdate_5.6.0_A00_install.ps1",
+    "script": {
+      "fileName": "DellCommandUpdate_5.6.0_A00_install.ps1",
+      "templateId": "exe-install-standard-v1",
+      "parameters": {
+        "installerFile": "Dell-Command-Update-Windows-Universal-Application_2WT0J_WIN64_5.6.0_A00.EXE"
+      },
+      "requiresAdmin": true
+    },
+    "behavior": {
+      "silentArgs": "/s",
+      "workingDirectory": ".",
+      "useMsiExec": false
+    }
+  },
+
+  "uninstall": {
+    "command": "powershell.exe -ExecutionPolicy Bypass -NoProfile -File DellCommandUpdate_5.6.0_A00_uninstall.ps1",
+    "script": {
+      "fileName": "DellCommandUpdate_5.6.0_A00_uninstall.ps1",
+      "templateId": "exe-uninstall-standard-v1",
+      "parameters": {},
+      "requiresAdmin": true
+    },
+    "behavior": {
+      "uninstallArgs": "/s",
+      "uninstallMethod": "custom"
+    }
+  },
+
+  "packaging": {
+    "tool": {
+      "path": "C:\\Tools\\IntuneWinAppUtil.exe",
+      "quiet": true
+    },
+    "sourceRoot": "C:\\Build\\DellCommandUpdate\\Source",
+    "outputRoot": "C:\\Build\\DellCommandUpdate\\Output",
+    "setupFile": "DellCommandUpdate_5.6.0_A00_install.ps1"
+  },
+
+  "constraints": {
+    "silentInstallRequired": true,
+    "noReboot": true,
+    "maxPackageSizeGB": 30,
+    "powershellVersion": "5.1"
+  },
+
+  "logging": {
+    "enabled": true,
+    "rootPath": "C:\\ProgramData\\Company\\Logs",
+    "filePrefix": "DellCommandUpdate_5.6.0_A00",
+    "level": "info"
+  }
+}
